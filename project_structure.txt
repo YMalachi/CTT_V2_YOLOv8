@@ -1,0 +1,40 @@
+CTT-YOLOv8/
+│
+├── data/                         # Input and intermediate data
+│   ├── raw_videos/              # Original world videos (input from Pupil Labs)
+│   ├── extracted_frames/        # Frames extracted from videos
+│   ├── annotations/             # Manual labels (YOLO format: .txt files per image)
+│   ├── yolo_dataset/            # YOLOv8 training-ready dataset
+│   │   ├── images/
+│   │   │   ├── train/
+│   │   │   └── val/
+│   │   └── labels/
+│   │       ├── train/
+│   │       └── val/
+│   └── detections/              # YOLOv8 output on all frames (JSON or TXT)
+│
+├── notebooks/                   # For exploration, testing detection, etc.
+│   └── demo_detect.ipynb
+│
+├── scripts/                     # Core processing logic
+│   ├── extract_frames.py       # Pull frames from video (optionally only from fixation moments)
+│   ├── train_yolo.py           # Calls YOLOv8 training
+│   ├── run_inference.py        # Runs detection on video frames
+│   ├── overlap_checker.py      # Checks if a fixation overlaps with a ball
+│   └── export_results.py       # Save structured results to CSV/JSON
+│
+├── utils/                       # General tools/utilities
+│   ├── video_utils.py
+│   ├── yolo_utils.py
+│   └── geometry_utils.py       # For calculating overlaps, distances, bounding box IOU etc.
+│
+├── outputs/                     # Final results
+│   ├── fixation_logs.csv       # All fixations with ball matches
+│   └── visualizations/         # Optional: images/videos with annotated results
+│
+├── models/                      # YOLOv8 model files and checkpoints
+│   └── yolov8_best.pt
+│
+├── README.md
+├── requirements.txt
+└── config.yaml                  # Configs like thresholds, class names, etc.
